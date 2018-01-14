@@ -55,6 +55,17 @@ Card(rank='K', suit='spades')
 Card(rank='2', suit='clubs')
 ```
 
-  
+1. 因为\_\_getitem\_\_方法把\[\]操作交给了self.\_cards列表， 所以我们的deck类自动支持切片（slicing） 操作。 下面列出了查看一摞牌最上面3张和只看牌面是A的牌的操作。 其中第二种操作的具体方法是，先抽出索引是12的那张牌， 然后每隔13张牌拿1张：
+
+   ```py
+   >>> deck[:3]
+   [Card(rank='2', suit='spades'), Card(rank='3', suit='spades'),
+   Card(rank='4', suit='spades')]
+   >>> deck[12::13]
+   [Card(rank='A', suit='spades'), Card(rank='A', suit='diamonds'),
+   Card(rank='A', suit='clubs'), Card(rank='A', suit='hearts')]
+   ```
+
+2. 
 
 
