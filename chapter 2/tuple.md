@@ -129,8 +129,59 @@ ESP
 | New York | 40.8086 | -74.0204 |
 | sao Paul | -23.5478 | -46.6358 |
 
+* 元组已经设计得很好用了， 但作为记录来用的话， 还是少了一个功能：我们时常会需要给记录中的字段命名。namedtuple函数的出现帮我们解决了这个问题。
 
+### 2.1.2 具名元组
+
+* collections.namedtuple是一个工厂函数， 它可以用来构建一个带字段名的元组和一个有名字的类——这个带名字的类对调试程序有很大帮助。
+
+  > 用namedtuple构建的类的实例所消耗的内存跟元组是一样的， 因为字段名都被存在对应的类里面。 这个实例跟普通的对象实例比起来也要小一些， 因为Python不会用\_\_dict\_\_来存放这些实例的属性。
+  >
+  > ```py
+  > >>> from collections import namedtuple
+  > >>> City = namedtuple('City', 'name country population coordinates') ➊
+  > >>> tokyo = City('Tokyo', 'JP', 36.933, (35.689722, 139.691667)) ➋
+  > >>> tokyo
+  > City(name='Tokyo', country='JP', population=36.933, coordinates=(35.689722,
+  > 139.691667))
+  > >>> tokyo.population ➌
+  > 36.933
+  > >>> tokyo.coordinates
+  > (35.689722, 139.691667)
+  > >>> tokyo[1]
+  > 'JP
+  > ```
+
+* 除了从普通元组那里继承来的属性之外， 具名元组还有一些自己专有的属性。 示例2-10中就展示了几个最有用的：**\_fields**类属性、 类方法**\_make**\(**iterable**\)和实例方法**\_asdict**\(\)。
+
+  ```py
+  >>> City._fields ➊
+  ('name', 'country', 'population', 'coordinates')
+  >>> LatLong = namedtuple('LatLong', 'lat long')
+  >>> delhi_data = ('Delhi NCR', 'IN', 21.935, LatLong(28.613889, 77.208889))
+  >>> delhi = City._make(delhi_data) ➋
+  >>> delhi._asdict() ➌
+  OrderedDict([('name', 'Delhi NCR'), ('country', 'IN'), ('population',
+  21.935), ('coordinates', LatLong(lat=28.613889, long=77.208889))])
+  >>> for key, value in delhi._asdict().items():
+  print(key + ':', value)
+  name: Delhi NCR
+  country: IN
+  population: 21.935
+  coordinates: LatLong(lat=28.613889, long=77.208889)
+  >>>
+  ```
+
+
+
+* \_fields属性是一个包含这个类所有字段名称的元组。
+
+* 用\_make\(\)通过接受一个可迭代对象来生成这个类的一个实例， 它的作用跟City\(\*delhi\_data\)是一样的。
+
+* \_asdict\(\)把具名元组以collections.OrderedDict的形式返回， 我们可以利用它来把元组里的信息友好地呈现出来。
 
   
+
+
 
 
