@@ -182,5 +182,11 @@ ESP
 
 > 可以清楚地看到， 除了跟增减元素相关的方法之外， 元组持列表的其他所有方法。 还有一个例外， 元组没有\_\_reversed\_\_方法， 但是这个方法只是个优化而已，reversed\(my\_tuple\)这个用法在没有\_\_reversed\_\_的情况下也是合法的。
 
+![](/assets/%UM_PD$9Y@DQB_%28HT2_DUWT.png)
+
+![](/assets/import1.png)
+
+
+
 
 
