@@ -50,6 +50,8 @@ StopIteration
 > 过， 如果协程还没激活（即， 状态是 'GEN\_CREATED'） ， 情况就不同了。 因此， 始终要调用 next\(my\_coro\) 激活协程——也可以调用
 >
 > my\_coro.send\(None\)， 效果一样。
+>
+> 最先调用 next\(my\_coro\) 函数这一步通常称为“预激”（prime） 协程（即， 让协程向前执行到第一个 yield 表达式， 准备好作为活跃的协程使用） 。
 
 
 
