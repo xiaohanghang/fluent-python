@@ -13,7 +13,14 @@
 
 # 生成器如何进化为协程
 
-协程的底层架构在“PEP 342—Coroutines via EnhancedGenerators”（https://www.python.org/dev/peps/pep-0342/） 中定义， 并在Python 2.5（2006 年） 实现了。 自此之后， yield 关键字可以在表达式中使用， 而且生成器 API 中增加了 .send\(value\) 方法。 生成器的调用方可以使用 .send\(...\) 方法发送数据， 发送的数据会成为生成器函数中 yield 表达式的值。 因此， 生成器可以作为协程使用。 协程是指一个过程， 这个过程与调用方协作， 产出由调用方提供的值。
+协程的底层架构在“PEP 342—Coroutines via EnhancedGenerators”（[https://www.python.org/dev/peps/pep-0342/）](https://www.python.org/dev/peps/pep-0342/）) 中定义， 并在  
+Python 2.5（2006 年） 实现了。 自此之后， yield 关键字可以在表达式中使用， 而且生成器 API 中增加了 .send\(value\) 方法。 生成器的调用  
+方可以使用 .send\(...\) 方法发送数据， 发送的数据会成为生成器函数中 yield 表达式的值。 因此， 生成器可以作为协程使用。 协程是指一  
+个过程， 这个过程与调用方协作， 产出由调用方提供的值。
+
+# 用作协程的生成器的基本行为
+
+
 
 
 
