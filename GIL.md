@@ -12,11 +12,9 @@ In the above example,the reference count for the empty list object \[\] was 3.Th
 
 Back to the GIL：
 
-The problem was that this reference count variable needed protection from race conditions where two threads increase or decrease its value simultaneously.If this happens,it can cause either leaked memory that is never released or,even worse,incorrectly release the memory while a reference to that object still exists.This can cause crashes or other "werid" bugs in your Python programs.
+##### The problem was that this reference count variable needed protection from race conditions where two threads increase or decrease its value simultaneously.If this happens,it can cause either leaked memory that is never released or,even worse,incorrectly release the memory while a reference to that object still exists.This can cause crashes or other "werid" bugs in your Python programs.
 
-
-
-
+##### 
 
 
 
