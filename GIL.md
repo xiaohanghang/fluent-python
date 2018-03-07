@@ -32,15 +32,17 @@ Back to the GIL：
 >
 > As you can see, the GIL was a pragmatic solution to a difficult problem that the CPython developers faced early on in Python’s life.
 
+## The impact on multi-threaded Python programs {#the-impact-on-multi-threaded-python-programs}
+
+When you look at a typical Python program—or any computer program for that matter—there’s a difference between those that are CPU-bound in their performance and those that are I/O-bound.
+
+CPU-bound programs are those that are pushing the CPU to its limit. This includes programs that do mathematical computations like matrix multiplications, searching, image processing, etc.
+
+I/O-bound programs are the ones that spend time waiting for Input/Output which can come from a user, file, database, network, etc. I/O-bound programs sometimes have to wait for a significant amount of time till they get what they need from the source due to the fact that the source may need to do its own processing before the input/output is ready, for example, a user thinking about what to enter into an input prompt or a database query running in its own process.
+
+Let’s have a look at a simple CPU-bound program that performs a countdown:
 
 
-
-
-
-
-
-
-##### 
 
 
 
