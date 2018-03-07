@@ -42,6 +42,39 @@ I/O-bound programs are the ones that spend time waiting for Input/Output which c
 
 Let’s have a look at a simple CPU-bound program that performs a countdown:
 
+```py
+# single_threaded.py
+import time
+from threading import Thread
+
+COUNT = 50000000
+
+def countdown(n):
+    while n>0:
+        n -= 1
+
+start = time.time()
+countdown(COUNT)
+end = time.time()
+
+print('Time taken in seconds -', end - start)
+```
+
+```
+$ python single_threaded.py
+Time taken in seconds - 6.20024037361145
+```
+
+As you can see, both versions take almost same amount of time to finish. In the multi-threaded version the GIL prevented the CPU-bound threads from executing in parellel.
+
+The GIL does not have much impact on the performance of I/O-bound multi-threaded programs as the lock is shared between threads while they are waiting for I/O.
+
+But a program whose threads are entirely CPU-bound, e.g., a program that processes an image in parts using threads, would not only become single threaded due to the lock but will also see an increase in execution time, as seen in the above example, in comparison to a scenario where it was written to be entirely single-threaded.
+
+This increase is the result of acquire and release overheads added by the lock.
+
+
+
 
 
 
